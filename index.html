@@ -1,25 +1,51 @@
 <html>
 <head>
-<title>Grade Input</title>
+<title>JUDGEMENT</title>
 </head>
 <body>
 
-<h1>Grade Input</h1>
+<h1>The time has come</h1>
 
-<h2>Simple</h2>
+<h2>~all we are is data in a box~</h2>
 
 
 <form method="post" action="input-service.php">
 
-<label for="studentID">Student ID: </label><br><br>
-<input type="text" id="studentID" required><br><br>
+<label for="names">What is your name? : </label><br><br>
+<input type="text" id="names" required><br><br>
 
-<label for="grades">Grade: </label><br><br>
-<input type="number" id="grades" required><br><br>
+<label for="grades">When is your birthday? : </label><br><br>
+<input type="date" id="grades" required><br><br>
 
-</form>
+<label for="color">What is a color you like? : </label><br><br>
+<input type="color" id="color" required><br><br>
 
-<button id="ajaxSubmit">Update via AJAX</button>
+<label for="cook">What is a type of cookie you enjoy? : </label><br><br>
+<input type="text" id="cook" required><br><br>
+
+<label for="act">Is there an actvity you would want to do together in 2021? : </label><br><br>
+<input type="text" id="act"><br><br>
+
+<br> Did you find eating these chocolate treats enjoyable?:<br><br>
+
+      <input type="radio" id="5" name="star" value="5">
+      <label for="5">YUHHH</label><br><br>
+
+      <input type="radio" id="4" name="star" value="4">
+      <label for="4">yuhh</label><br><br>
+
+      <input type="radio" id="3" name="star" value="3">
+      <label for="3">uhhh</label> <br><br> 
+
+      <input type="radio" id="2" name="star" value="2">
+      <label for="2">bruh</label><br><br>
+
+      <input type="radio" id="1" name="star" value="1">
+      <label for="1">bruhhh</label><br><br>
+
+ </form> 
+
+<button id="ajaxSubmit">Submit</button>
 
 
 
@@ -28,13 +54,13 @@
 
 $("#ajaxSubmit").click(function(){
 
-    var id = $("#studentID").val();
+    var id = $("#names").val();
     var grade = $("#grades").val();
 
     $.ajax({
         url: 'input-service.php',
         type: 'post',
-        data: { 'studentID': id, 'grades': grade },
+        data: { 'names': id, 'grades': grade },
         success: function (data, status)
         {
             if (id == "" || grade == "") {
@@ -44,8 +70,8 @@ $("#ajaxSubmit").click(function(){
             if (status == "success")
             {   
 
-                    alert("Grade Submitted!");
-                    $("#studentID").val("")
+                    alert("Your answers have been submitted!");
+                    $("#names").val("")
                     $("#grade").val("")
             }
         },
