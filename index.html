@@ -14,11 +14,12 @@
 <label for="names">What is your name? : </label><br><br>
 <input type="text" id="names" required><br><br>
 
-<label for="grades">When is your birthday? : </label><br><br>
+<!--<label for="grades">When is your birthday? : </label><br><br>
 <input type="date" id="grades" required><br><br>
 
 <label for="color">What is a color you like? : </label><br><br>
 <input type="color" id="color" required><br><br>
+-->
 
 <label for="cook">What is a type of cookie you enjoy? : </label><br><br>
 <input type="text" id="cook" required><br><br>
@@ -26,22 +27,24 @@
 <label for="act">Is there an actvity you would want to do together in 2021? : </label><br><br>
 <input type="text" id="act"><br><br>
 
-<br> Did you find eating these chocolate treats enjoyable?:<br><br>
+<br> how the chocolate ?:<br><br>
 
-      <input type="radio" id="5" name="star" value="5">
+      <!--the radio is the group, the id for the , the name is for the group stars, and the value is the value sent --
+      <input type="radio" id="5" name="stars" value=5>
       <label for="5">YUHHH</label><br><br>
 
-      <input type="radio" id="4" name="star" value="4">
+      <input type="radio" id="4" name="stars" value=4>
       <label for="4">yuhh</label><br><br>
 
-      <input type="radio" id="3" name="star" value="3">
+      <input type="radio" id="3" name="stars" value=3>
       <label for="3">uhhh</label> <br><br> 
 
-      <input type="radio" id="2" name="star" value="2">
+      <input type="radio" id="2" name="stars" value=2>
       <label for="2">bruh</label><br><br>
 
-      <input type="radio" id="1" name="star" value="1">
+      <input type="radio" id="1" name="stars" value=1>
       <label for="1">bruhhh</label><br><br>
+-->
 
  </form> 
 
@@ -55,16 +58,22 @@
 $("#ajaxSubmit").click(function(){
 
     var id = $("#names").val();
-    var grade = $("#grades").val();
-
+   // var grade = $("#grades").val();
+  //  var color = $("#colors").val();
+    var cook = $("#cook").val();
+    var act = $("#act").val();
+    //var star = $("#stars").val();
+  
     $.ajax({
         url: 'input-service.php',
         type: 'post',
-        data: { 'names': id, 'grades': grade },
+        data: { 'names': id, //'grades' : grade, 'color' : color, 
+         'cook' : cook, 'act' : act// 'star' : star
+       },
         success: function (data, status)
         {
-            if (id == "" || grade == "") {
-                 alert("Both inputs must be filled out");
+            if (id == "") {
+                 alert("All inputs must be filled out");
                  return;
             }
             if (status == "success")
@@ -72,7 +81,12 @@ $("#ajaxSubmit").click(function(){
 
                     alert("Your answers have been submitted!");
                     $("#names").val("")
-                    $("#grade").val("")
+                  //  $("#grade").val("")
+                    $("#cook").val("")
+                    $("#act").val("")
+                   // $("#star").val("")
+
+
             }
         },
         error: function (xhr, desc, err)
